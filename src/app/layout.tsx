@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { URL } from "url";
+import ogImage from "./opengraph-image.jpg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +15,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BIKERWAVE - Balades Moto",
+  title: "Balades Moto",
   description:
-    "BIKERWAVE vous propose de créer ou participer à des balades moto. Votre prochaine balade moto est ici !",
+    "Votre prochaine balade moto est ici ! Créez ou rejoignez des balades, découvrez de nouveaux itinéraires et partenaires de route.",
+  metadataBase: new URL("https://balades-moto.netlify.app/"),
+  openGraph: {
+    images: [
+      {
+        url: ogImage.src,
+        width: ogImage.width,
+        height: ogImage.height,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
